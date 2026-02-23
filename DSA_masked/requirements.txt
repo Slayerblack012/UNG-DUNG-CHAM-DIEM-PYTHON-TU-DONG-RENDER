@@ -7,3 +7,4 @@ pymssql
 pyodbc
 python-multipart
 python-dotenv
+fastapi-utils

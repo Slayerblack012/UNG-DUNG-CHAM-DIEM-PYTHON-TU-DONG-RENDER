@@ -7,17 +7,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
-  /* -- DARK MODE (Warm Academic Night) -- */
+  /* -- DARK MODE (Clear Structure Night) -- */
 
-  /* Backgrounds — warm dark, not cold black */
-  --bg-app: #111827;
-  /* Gray 900, warmer than pure slate */
-  --bg-sidebar: #0d1117;
-  --bg-card: #1f2937;
-  /* Gray 800 */
-  --bg-input: #374151;
-  /* Gray 700 */
-  --bg-hover: #1f2937;
+  /* Backgrounds */
+  --bg-app: #0f172a;
+  /* Slate 900 - distinct app base */
+  --bg-sidebar: #020617;
+  /* Slate 950 - deepest for sidebar separation */
+  --bg-card: #1e293b;
+  /* Slate 800 - cards pop on app base */
+  --bg-input: #334155;
+  /* Slate 700 - inputs pop on cards */
+  --bg-hover: #334155;
+  /* Slate 700 - obvious hover */
 
   /* Brand — Teal / Emerald (Education green) */
   --brand-primary: #0d9488;
@@ -33,16 +35,18 @@
   --brand-warning: #f59e0b;
 
   /* Text */
-  --text-bright: #f3f4f6;
-  /* Gray 100 */
-  --text-main: #9ca3af;
-  /* Gray 400 */
-  --text-muted: #6b7280;
-  /* Gray 500 */
+  --text-bright: #f8fafc;
+  /* Slate 50 - high contrast white */
+  --text-main: #cbd5e1;
+  /* Slate 300 - clear reading text */
+  --text-muted: #94a3b8;
+  /* Slate 400 - legible secondary text */
 
   /* Borders */
-  --border-pro: #1f2937;
-  --border-active: #374151;
+  --border-pro: #334155;
+  /* Slate 700 - visible borders for structure */
+  --border-active: #475569;
+  /* Slate 600 - elevated active state */
 
   /* Fonts */
   --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

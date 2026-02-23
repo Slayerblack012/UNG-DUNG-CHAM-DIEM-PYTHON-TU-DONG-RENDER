@@ -1,0 +1,307 @@
+/*
+   DSA AUTOGRADER — EDUCATION THEME
+   "Friendly, Warm, Academic"
+   Inspired by Google Classroom / Canvas LMS
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+:root {
+  /* -- DARK MODE (Warm Academic Night) -- */
+
+  /* Backgrounds — warm dark, not cold black */
+  --bg-app: #111827;
+  /* Gray 900, warmer than pure slate */
+  --bg-sidebar: #0d1117;
+  --bg-card: #1f2937;
+  /* Gray 800 */
+  --bg-input: #374151;
+  /* Gray 700 */
+  --bg-hover: #1f2937;
+
+  /* Brand — Teal / Emerald (Education green) */
+  --brand-primary: #0d9488;
+  /* Teal 600 — academic, calm, trusted */
+  --brand-primary-hover: #0f766e;
+  /* Teal 700 */
+  --brand-info: #2dd4bf;
+  /* Teal 400 */
+
+  /* Status */
+  --brand-success: #22c55e;
+  --brand-danger: #ef4444;
+  --brand-warning: #f59e0b;
+
+  /* Text */
+  --text-bright: #f3f4f6;
+  /* Gray 100 */
+  --text-main: #9ca3af;
+  /* Gray 400 */
+  --text-muted: #6b7280;
+  /* Gray 500 */
+
+  /* Borders */
+  --border-pro: #1f2937;
+  --border-active: #374151;
+
+  /* Fonts */
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+
+  /* Metrics */
+  --radius-pro: 10px;
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* -- LIGHT MODE (Warm Classroom White) -- */
+[data-theme="light"] {
+  --bg-app: #fafaf9;
+  /* Stone 50 — warm white */
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f5f5f4;
+  /* Stone 100 */
+  --bg-hover: #f5f5f4;
+
+  --text-bright: #1c1917;
+  /* Stone 900 */
+  --text-main: #57534e;
+  /* Stone 600 */
+  --text-muted: #a8a29e;
+  /* Stone 400 */
+
+  --border-pro: #e7e5e4;
+  /* Stone 200 */
+  --border-active: #d6d3d1;
+  /* Stone 300 */
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* ============================
+   RESET & BASE
+   ============================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-bright);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+}
+
+/* ============================
+   LAYOUT
+   ============================ */
+
+.app-container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================
+   NAVIGATION — Education Bar
+   ============================ */
+
+.dev-nav {
+  background: var(--bg-sidebar);
+  border-bottom: 3px solid var(--brand-primary);
+  padding: 0.6rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-dev {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-bright);
+  text-decoration: none;
+}
+
+.logo-dev i {
+  color: var(--brand-primary);
+  font-size: 1.15rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-item-dev {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.nav-item-dev:hover {
+  color: var(--brand-primary);
+  background: rgba(13, 148, 136, 0.08);
+}
+
+.btn-theme-dev {
+  background: none;
+  border: 1px solid var(--border-active);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-theme-dev:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 1rem;
+  }
+
+  .nav-content {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo-dev {
+    font-size: 0.9rem;
+  }
+
+  .logo-dev span {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    gap: 0.6rem;
+  }
+
+  .nav-item-dev {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-dev span span {
+    display: none;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* ============================
+   ACCESSIBILITY
+   ============================ */
+
+*:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
+.app-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border-pro);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.app-footer p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

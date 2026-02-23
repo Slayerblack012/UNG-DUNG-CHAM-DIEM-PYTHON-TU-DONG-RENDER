@@ -1,0 +1,21 @@
+{
+  "id": 96,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | test_db_connection.py",
+  "topic": null,
+  "total_score": null,
+  "breakdown": null,
+  "algorithms": "Dynamic Programming",
+  "complexity": 3,
+  "status": "PENDING",
+  "reasoning": "Chua ket noi voi ngan hang bai tap. He thong chi phan tich cau truc code, khong cho diem.",
+  "improvement": "",
+  "notes": [
+    "He thong chua cap nhat tieu chi."
+  ],
+  "ai_scored": false,
+  "runtime": "2ms",
+  "submitted_at": "2026-02-23 13:52:16"
+}

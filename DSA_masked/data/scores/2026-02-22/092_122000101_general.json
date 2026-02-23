@@ -1,0 +1,21 @@
+{
+  "id": 92,
+  "student_id": "122000000",
+  "student_name": "122000101",
+  "assignment_code": null,
+  "filename": "122000000 - 122000101 | ai_grader.py",
+  "topic": null,
+  "total_score": null,
+  "breakdown": null,
+  "algorithms": "Basic Logic",
+  "complexity": 14,
+  "status": "PENDING",
+  "reasoning": "Chua ket noi voi ngan hang bai tap. He thong chi phan tich cau truc code, khong cho diem.",
+  "improvement": "",
+  "notes": [
+    "He thong chua cap nhat tieu chi."
+  ],
+  "ai_scored": false,
+  "runtime": "7ms",
+  "submitted_at": "2026-02-22 22:06:13"
+}

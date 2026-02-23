@@ -1,0 +1,115 @@
+/* 
+   DSA AUTOGRADER - FLUID iOS-LIKE UX
+   High-end animations & interactions
+*/
+
+/* --- GLOBAL VARS FOR ANIMATION --- */
+:root {
+  --ease-ios: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* --- ENHANCED KEYFRAMES --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- UTILITY CLASSES --- */
+.animate-enter {
+  animation: fadeInUp 0.6s var(--ease-ios) forwards;
+  will-change: transform, opacity;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* --- CLICK FEEDBACK (iOS Style) --- */
+button:active:not(:disabled), 
+.btn:active:not(:disabled),
+.dev-file-item:active {
+  transform: scale(0.96);
+  transition: transform 0.1s var(--ease-out);
+}
+
+/* --- GLASSMORPHISM MODAL --- */
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Nhẹ hơn, tinh tế hơn */
+  backdrop-filter: blur(12px) saturate(180%); /* iOS Blur Effect */
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: var(--font-ui);
+  padding: 1rem;
+  transition: all 0.3s var(--ease-out);
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-pro);
+  border-radius: 16px; /* Bo góc lớn hơn (iOS style) */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: scaleIn 0.35s var(--ease-spring) forwards;
+  transform-origin: center center;
+}
+
+/* --- FILE LIST ANIMATIONS --- */
+.dev-file-item {
+  animation: slideInRight 0.4s var(--ease-ios) forwards;
+  opacity: 0; /* Đợi animation */
+}
+
+/* --- TOAST NOTIFICATIONS (Dynamic Island Style) --- */
+.dev-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(22, 27, 34, 0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  animation: toastEnter 0.5s var(--ease-spring) forwards;
+}
+
+@keyframes toastEnter {
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.dev-toast.hide {
+  animation: toastExit 0.3s var(--ease-out) forwards;
+}
+
+@keyframes toastExit {
+  to { transform: translateY(10px) scale(0.9); opacity: 0; }
+}
+
+

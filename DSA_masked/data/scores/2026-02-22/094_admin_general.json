@@ -1,0 +1,21 @@
+{
+  "id": 94,
+  "student_id": "122000000",
+  "student_name": "admin",
+  "assignment_code": null,
+  "filename": "122000000 - admin | safety_checker.py",
+  "topic": null,
+  "total_score": null,
+  "breakdown": null,
+  "algorithms": "Nested Loops, Tree Structure",
+  "complexity": 9,
+  "status": "PENDING",
+  "reasoning": "Chua ket noi voi ngan hang bai tap. He thong chi phan tich cau truc code, khong cho diem.",
+  "improvement": "",
+  "notes": [
+    "He thong chua cap nhat tieu chi."
+  ],
+  "ai_scored": false,
+  "runtime": "1ms",
+  "submitted_at": "2026-02-22 22:22:00"
+}

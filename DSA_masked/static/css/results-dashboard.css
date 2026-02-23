@@ -1,0 +1,237 @@
+/* 
+   DSA AUTOGRADER - DEV RESULTS DASHBOARD
+*/
+
+/* --- RESULT LIST CONTAINER (SCROLLABLE) --- */
+#results-container {
+  max-height: 70vh;
+  /* Giới hạn chiều cao */
+  overflow-y: auto;
+  /* Cho phép cuộn dọc */
+  padding-right: 0.5rem;
+  /* Tránh nội dung dính scrollbar */
+
+  /* Custom Scrollbar for Container */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-active) transparent;
+}
+
+#results-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+#results-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#results-container::-webkit-scrollbar-thumb {
+  background-color: var(--border-pro);
+  border-radius: 4px;
+}
+
+#results-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border-active);
+}
+
+.dev-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dev-stat-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-pro);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-pro);
+}
+
+.dev-stat-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.dev-stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  font-family: var(--font-code);
+}
+
+/* Pipeline Style Result Card */
+/* Pipeline Style Result Card - Collapsible */
+.pipeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-pro);
+  border-radius: var(--radius-pro);
+  margin-bottom: 0.75rem;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.pipeline-card:hover {
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(2px);
+}
+
+.pipeline-header {
+  padding: 1rem 1.25rem;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pipeline-header:hover {
+  background: var(--bg-hover);
+}
+
+.pipeline-card.expanded .pipeline-header {
+  background: var(--bg-hover);
+  border-bottom: 1px solid var(--border-pro);
+}
+
+/* Chevron Icon Rotation */
+.pipeline-toggle-icon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-muted);
+}
+
+.pipeline-card.expanded .pipeline-toggle-icon {
+  transform: rotate(180deg);
+  color: var(--text-bright);
+}
+
+/* Status Indicators */
+.pipeline-status {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 90px;
+  justify-content: center;
+}
+
+.status-ac {
+  background: rgba(22, 163, 74, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.status-wa {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.status-fl {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.status-pending {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* Body Content - Hidden by default */
+.pipeline-body {
+  display: none;
+  padding: 1.5rem;
+  background: var(--bg-app);
+  gap: 2rem;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pipeline-card.expanded .pipeline-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  /* Sidebar điểm số + Content */
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .pipeline-card.expanded .pipeline-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.score-display {
+  text-align: center;
+}
+
+.score-box-dev {
+  border: 2px solid var(--border-pro);
+  padding: 1.5rem 0.5rem;
+  border-radius: var(--radius-pro);
+  margin-bottom: 1rem;
+}
+
+.score-box-dev .val {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  font-family: var(--font-code);
+}
+
+.score-box-dev .max {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Feedback / Review Box */
+.feedback-log {
+  background: var(--bg-hover);
+  border: 1px solid var(--border-pro);
+  padding: 1.25rem;
+  border-radius: var(--radius-pro);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  /* subtle shadow */
+}
+
+.feedback-log p {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--text-bright);
+  line-height: 1.7;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+}
+
+.breakdown-tag {
+  color: var(--text-muted);
+}
+
+.breakdown-val {
+  color: var(--text-bright);
+  font-weight: 700;
+}

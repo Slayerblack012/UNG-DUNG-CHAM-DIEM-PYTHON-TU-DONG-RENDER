@@ -1,0 +1,22 @@
+{
+  "id": 93,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | services.py",
+  "topic": null,
+  "total_score": 0,
+  "breakdown": {},
+  "algorithms": "Phân tích thất bại",
+  "complexity": 0,
+  "status": "FLAG",
+  "reasoning": "",
+  "improvement": "",
+  "notes": [
+    "Vi phạm bảo mật",
+    "Import thư viện bị cấm: os"
+  ],
+  "ai_scored": false,
+  "runtime": "0ms",
+  "submitted_at": "2026-02-22 22:09:48"
+}

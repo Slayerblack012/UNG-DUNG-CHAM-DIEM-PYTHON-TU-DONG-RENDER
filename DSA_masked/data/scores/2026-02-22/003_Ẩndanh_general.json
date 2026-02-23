@@ -1,0 +1,26 @@
+{
+  "id": 3,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | test python.zip/binarysearch.py",
+  "topic": null,
+  "total_score": 80,
+  "breakdown": {
+    "logic_score": 36,
+    "algorithm_score": 29,
+    "style_score": 8,
+    "optimization_score": 7
+  },
+  "algorithms": "Recursion, Tree Structure",
+  "complexity": 4,
+  "status": "PASS",
+  "reasoning": "Danh gia tu dong dua tren phan tich cau truc code (AST).",
+  "improvement": "AI Service khong kha dung — su dung diem AST.",
+  "notes": [
+    "AI Service khong kha dung — su dung diem AST."
+  ],
+  "ai_scored": false,
+  "runtime": "0ms",
+  "submitted_at": "2026-02-22 21:20:09"
+}

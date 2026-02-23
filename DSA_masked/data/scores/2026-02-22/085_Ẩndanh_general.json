@@ -1,0 +1,22 @@
+{
+  "id": 85,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | test python.zip/lachonguniversity.py",
+  "topic": null,
+  "total_score": null,
+  "breakdown": null,
+  "algorithms": "Queue",
+  "complexity": 1,
+  "status": "FLAG",
+  "reasoning": "Chua ket noi voi ngan hang bai tap. He thong chi phan tich cau truc code, khong cho diem.",
+  "improvement": "",
+  "notes": [
+    "He thong chua cap nhat tieu chi.",
+    "CANH BAO: Trung lap 100% voi bai cua test python.zip/te2.py"
+  ],
+  "ai_scored": false,
+  "runtime": "1ms",
+  "submitted_at": "2026-02-22 22:04:48"
+}

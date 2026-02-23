@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả | DSA Grader</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/app.css?v=6.1">
+    <link rel="stylesheet" href="/static/css/toast.css?v=6.1">
+
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('dsa-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+    <nav class="dev-nav">
+        <div class="app-container nav-content">
+            <a href="/" class="logo-dev">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>DSA <span style="color:var(--brand-primary)">Grader</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-item-dev">Nộp bài mới</a>
+                <button id="theme-toggle" class="btn-theme-dev" aria-label="Đổi giao diện" style="margin-left: 0.5rem;">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="app-container py-5">
+        <header style="margin-bottom: 2rem; text-align: center;">
+            <h1 class="page-title">
+                Kết quả <span>chấm điểm</span>
+            </h1>
+            <p class="page-subtitle">Xem chi tiết điểm số, nhận xét và phân tích độ phức tạp từ hệ thống.</p>
+        </header>
+
+        <!-- Summary Stats -->
+        <section class="dev-stats-grid" id="summary-section">
+            <!-- Dynamic Summary Boxes -->
+        </section>
+
+        <!-- Filters -->
+        <div class="dev-card" style="margin-bottom: 2rem;">
+            <div class="dev-card-body" style="display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1.25rem;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label class="dev-label">Tìm kiếm</label>
+                    <input type="text" id="search-filter" class="dev-input"
+                        placeholder="Nhập tên file hoặc sinh viên...">
+                </div>
+                <div style="width: 220px;">
+                    <label class="dev-label">Lọc theo kết quả</label>
+                    <select id="status-filter" class="dev-select">
+                        <option value="all">Tất cả</option>
+                        <option value="PASS">Đạt</option>
+                        <option value="FAIL">Chưa đạt</option>
+                        <option value="FLAG">Cảnh báo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-container">
+            <!-- Loading State -->
+            <div class="dev-card" style="padding: 4rem 2rem; text-align: center;">
+                <i class="fa-solid fa-spinner fa-spin"
+                    style="font-size: 2.5rem; color: var(--brand-primary); margin-bottom: 1.5rem;"></i>
+                <h4 style="font-size: 1.1rem; color: var(--text-bright); margin-bottom: 0.5rem;">Đang tải kết quả...
+                </h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Hệ thống đang trích xuất dữ liệu bài làm của
+                    bạn.</p>
+            </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div id="actions-container" style="display: none; margin-top: 2rem; text-align: center;">
+            <a href="/" class="btn-dev-primary" style="display: inline-flex; width: auto; padding: 0.75rem 2rem;">Nộp
+                bài mới</a>
+        </div>
+
+        <footer class="app-footer">
+            <p>
+                Welcome to DSA Masked OS © -_-
+                <br>
+                Good Luck!
+            </p>
+        </footer>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="/static/js/common.js?v=6.1"></script>
+    <script src="/static/js/toast.js?v=6.1"></script>
+    <script src="/static/js/results.js?v=6.1"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{
+  "id": 18,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | test python.zip/eeeee.py",
+  "topic": null,
+  "total_score": 38,
+  "breakdown": {
+    "logic_score": 15,
+    "algorithm_score": 10,
+    "style_score": 6,
+    "optimization_score": 7
+  },
+  "algorithms": "Basic Logic",
+  "complexity": 1,
+  "status": "FAIL",
+  "reasoning": "Danh gia tu dong dua tren phan tich cau truc code (AST).",
+  "improvement": "AI Service khong kha dung — su dung diem AST.",
+  "notes": [
+    "AI Service khong kha dung — su dung diem AST."
+  ],
+  "ai_scored": false,
+  "runtime": "0ms",
+  "submitted_at": "2026-02-22 21:33:07"
+}

@@ -1,0 +1,38 @@
+/*
+   DSA AUTOGRADER — Education Theme V2
+   Master stylesheet — imports all modules
+*/
+
+@import "base.css";
+@import "components.css";
+@import "ux.css";
+@import "results-dashboard.css";
+
+/* ── Selection ── */
+::selection {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-active);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+/* ── Smooth Scroll ── */
+html {
+  scroll-behavior: smooth;
+}

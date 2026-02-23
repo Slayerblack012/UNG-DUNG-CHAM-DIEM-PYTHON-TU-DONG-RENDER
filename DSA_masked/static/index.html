@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nộp Bài Tập | DSA Grader</title>
+  <meta name="description" content="Hệ thống chấm điểm bài tập Cấu trúc dữ liệu và Giải thuật" />
+  <link rel="icon" href="https://www.python.org/static/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/app.css" />
+  <link rel="stylesheet" href="/static/css/toast.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("dsa-theme") || "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="dev-nav">
+    <div class="app-container nav-content">
+      <a href="/" class="logo-dev">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>DSA <span style="color: var(--brand-primary)">Grader</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#" id="rules-btn" class="nav-item-dev">
+          <i class="fa-solid fa-clipboard-list" style="margin-right: 6px"></i>Quy định
+        </a>
+        <a href="/results" class="nav-item-dev">
+          <i class="fa-solid fa-chart-column" style="margin-right: 6px"></i>Kết quả
+        </a>
+        <button id="theme-toggle" class="btn-theme-dev" aria-label="Đổi giao diện">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <span class="nav-item-dev status-indicator">
+          <span class="status-dot"></span>
+          Hệ thống sẵn sàng
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="app-container" style="padding-top: 2rem; padding-bottom: 2rem">
+    <header style="margin-bottom: 2rem; text-align: center">
+      <h1 class="page-title">
+        Nộp bài tập
+        <span style="color: var(--brand-primary)">Cấu trúc dữ liệu và Giải thuật</span>
+      </h1>
+      <p class="page-subtitle">
+        Điền thông tin, chọn file bài làm và nộp. Kết quả sẽ có ngay sau khi xử lý xong.
+      </p>
+    </header>
+
+    <form id="grade-form" style="max-width: 680px; margin: 0 auto;">
+
+      <!-- Bước 1 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3 class="step-title">Thông tin sinh viên</h3>
+          <p class="step-desc">Nhập mã số và họ tên để ghi nhận bài nộp.</p>
+          <div class="form-grid-2col" style="margin-top: 0.75rem">
+            <input type="text" name="student_id" id="student-id" class="dev-input" placeholder="Mã số sinh viên"
+              maxlength="20" style="font-family: var(--font-code)" />
+            <input type="text" name="student_name" id="student-name" class="dev-input" placeholder="Họ và tên" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bước 2 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3 class="step-title">Chọn bài làm</h3>
+          <p class="step-desc">Kéo thả hoặc nhấn vào ô bên dưới để tải file lên.</p>
+          <div class="dev-zone" id="upload-zone" style="margin-top: 0.75rem">
+            <input type="file" id="files" name="files" multiple hidden accept=".py,.zip,.rar" />
+            <i class="fa-solid fa-folder-open"
+              style="font-size: 2rem; margin-bottom: 0.75rem; color: var(--brand-primary)"></i>
+            <h4 style="font-size: 0.95rem;">Kéo thả file vào đây hoặc nhấn để chọn</h4>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.25rem">Chấp nhận: .py, .zip, .rar</p>
+          </div>
+
+          <div id="file-list-container" style="display: none; margin-top: 0.75rem">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem">
+              <span style="font-size: 0.85rem; color: var(--text-main)">
+                <i class="fa-solid fa-check-circle" style="color: var(--brand-success); margin-right: 6px"></i>
+                Đã chọn <strong id="file-count">0</strong> tệp
+              </span>
+              <button type="button" id="clear-files-btn" class="btn-text-danger">
+                <i class="fa-solid fa-times" style="margin-right: 4px"></i>Xóa tất cả
+              </button>
+            </div>
+            <div id="file-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bước 3 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3 class="step-title">Loại bài tập <span style="opacity:0.4; font-weight:400; font-size:0.85rem">(không bắt
+              buộc)</span></h3>
+          <p class="step-desc">Chọn chủ đề để hệ thống đánh giá chính xác hơn.</p>
+          <select name="topic" id="topic-select" class="dev-select" style="margin-top: 0.75rem">
+            <option value="none">Tự động nhận diện</option>
+            <option value="sorting">Thuật toán sắp xếp</option>
+            <option value="searching">Thuật toán tìm kiếm</option>
+            <option value="linked_list">Danh sách liên kết</option>
+            <option value="recursion">Đệ quy & Quay lui</option>
+            <option value="tree">Cây & Đồ thị</option>
+            <option value="dynamic_programming">Quy hoạch động</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Nút nộp -->
+      <button type="submit" id="submit-btn" class="btn-dev-primary" disabled
+        style="height: 52px; font-size: 1rem; margin-top: 0.5rem">
+        <i class="fa-solid fa-arrow-right"></i>
+        <span>Nộp bài</span>
+      </button>
+    </form>
+
+    <footer class="app-footer">
+      <p>
+        Welcome to DSA Masked OS &copy; -_-
+        <br />
+        Good Luck!
+      </p>
+    </footer>
+  </main>
+
+  <!-- ═══════════ LOADING OVERLAY ═══════════ -->
+  <div id="loading-overlay" class="terminal-overlay" style="display: none">
+    <div class="terminal-window" style="text-align: center; max-width: 400px">
+      <div class="terminal-body" style="padding: 3rem 2rem">
+        <div class="loading-spinner"></div>
+        <h3 id="loading-message" class="loading-title">Đang xử lý...</h3>
+        <p class="loading-subtitle">Vui lòng đợi trong giây lát.</p>
+        <div class="progress-track">
+          <div id="loading-progress-bar" class="progress-fill"></div>
+        </div>
+        <div class="progress-info">
+          <span>Tiến trình</span>
+          <span id="prog-val" style="color: var(--text-bright)">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ CONFIRM MODAL ═══════════ -->
+  <div id="custom-confirm" class="terminal-overlay" style="display: none; z-index: 1050; backdrop-filter: blur(12px)">
+    <div class="terminal-window"
+      style="width: 320px; text-align: center; border-radius: 14px; overflow: hidden; padding: 0">
+      <div style="padding: 1.5rem 1.5rem 1rem">
+        <div class="confirm-icon-wrap">
+          <i class="fa-solid fa-trash-can" style="color: var(--brand-danger); font-size: 1.25rem"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem; color: var(--text-bright); font-size: 1.1rem">Xóa tệp tin?</h3>
+        <p id="confirm-msg" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin: 0">
+          Bạn có chắc muốn xóa file này không?
+        </p>
+      </div>
+      <div style="display: flex; border-top: 1px solid var(--border-pro)">
+        <button id="confirm-cancel" class="confirm-btn-cancel">Hủy</button>
+        <button id="confirm-yes" class="confirm-btn-danger">Xóa ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ RULES MODAL ═══════════ -->
+  <div id="rules-modal" class="terminal-overlay" style="display: none; z-index: 2000">
+    <div class="terminal-window" style="max-width: 700px; width: 95%">
+      <div class="terminal-head"
+        style="background: var(--bg-card); border-bottom: 1px solid var(--border-pro); padding: 1.25rem 1.5rem">
+        <div style="display: flex; align-items: center; gap: 0.75rem">
+          <i class="fa-solid fa-scale-balanced" style="color: var(--brand-primary); font-size: 1.1rem"></i>
+          <h3 style="margin: 0; font-size: 1.1rem">Quy chế & Hướng dẫn nộp bài</h3>
+        </div>
+      </div>
+      <div class="terminal-body" style="padding: 0; background: var(--bg-app)">
+        <div class="rules-grid">
+          <!-- Column 1: Format & Naming -->
+          <div class="rules-col">
+            <div style="margin-bottom: 2rem">
+              <div class="rules-section-title">
+                <i class="fa-solid fa-file-code" style="color: var(--brand-info)"></i>
+                <strong style="color: var(--text-bright)">Định dạng cho phép</strong>
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+                <span class="format-badge format-badge--py"><i class="fa-brands fa-python"></i> .py</span>
+                <span class="format-badge format-badge--zip"><i class="fa-solid fa-file-zipper"></i> .zip</span>
+                <span class="format-badge format-badge--zip"><i class="fa-solid fa-file-zipper"></i> .rar</span>
+              </div>
+            </div>
+            <div>
+              <div class="rules-section-title">
+                <i class="fa-solid fa-signature" style="color: var(--brand-success)"></i>
+                <strong style="color: var(--text-bright)">Quy tắc đặt tên file</strong>
+              </div>
+              <div class="naming-example">
+                <span>MSSV_HoTen_BaiTap.py</span>
+                <i class="fa-solid fa-check" style="color: var(--brand-success)"></i>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem">
+                Vui lòng viết tên không dấu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Column 2: Anti-Cheat & Policy -->
+          <div class="rules-col">
+            <div style="margin-bottom: 1.5rem">
+              <div class="rules-section-title">
+                <i class="fa-solid fa-user-shield" style="color: var(--brand-danger)"></i>
+                <strong style="color: var(--text-bright)">Chính sách Liêm chính</strong>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5">
+                Hệ thống sử dụng <strong>công nghệ phân tích mã nguồn</strong> để quét đạo văn.
+              </p>
+              <ul class="rules-list">
+                <li>Sao chép code: <span style="color: var(--brand-danger); font-weight: 600">0 điểm</span></li>
+                <li>Gian lận: <span style="color: var(--brand-warning); font-weight: 600">Cảnh báo</span></li>
+              </ul>
+            </div>
+            <div class="rules-tip">
+              <div style="display: flex; gap: 0.75rem">
+                <i class="fa-solid fa-lightbulb" style="color: #818cf8; margin-top: 2px"></i>
+                <div>
+                  <strong style="color: #818cf8; font-size: 0.9rem; display: block; margin-bottom: 4px">Mẹo nhỏ</strong>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0">
+                    Code sạch sẽ, comment đầy đủ sẽ giúp bạn được đánh giá tốt hơn.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rules-footer">
+          <span style="font-size: 0.85rem; color: var(--text-muted)">Đã hiểu rõ quy định?</span>
+          <button id="rules-done" class="btn-dev-primary" style="padding: 0.6rem 1.75rem; border-radius: 6px">
+            <i class="fa-solid fa-check" style="margin-right: 6px"></i> Đồng ý tiếp tục
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SCRIPTS ═══════════ -->
+  <div id="toast-container"></div>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/toast.js"></script>
+  <script src="/static/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+requests
+google-genai
+httpx
+pymssql
+pyodbc
+python-multipart
+python-dotenv

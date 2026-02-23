@@ -1,0 +1,21 @@
+{
+  "id": 78,
+  "student_id": "anonymous",
+  "student_name": "Ẩn danh",
+  "assignment_code": null,
+  "filename": "Ẩn danh | test python.zip/testdemo.py",
+  "topic": null,
+  "total_score": null,
+  "breakdown": null,
+  "algorithms": "Nested Loops, Swap Pattern",
+  "complexity": 4,
+  "status": "PENDING",
+  "reasoning": "Chua ket noi voi ngan hang bai tap. He thong chi phan tich cau truc code, khong cho diem.",
+  "improvement": "",
+  "notes": [
+    "He thong chua cap nhat tieu chi."
+  ],
+  "ai_scored": false,
+  "runtime": "1ms",
+  "submitted_at": "2026-02-22 22:01:01"
+}

@@ -19,7 +19,7 @@ import httpx
 
 from fastapi import APIRouter, BackgroundTasks, File, Form, Query, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
-from fastapi_utils.tasks import repeat_every
+
 
 from app.core.config import BASE_DIR, MAX_CONCURRENT_AI_CALLS, JOB_TTL_SECONDS
 from app.services.grader import AIGrader
@@ -59,10 +59,13 @@ def cleanup_expired_jobs() -> int:
     return len(expired)
 
 @router.on_event("startup")
-@repeat_every(seconds=3600)  # Chạy 1 giờ / lần
-def periodic_job_cleanup():
+async def periodic_job_cleanup():
     """Tự động dọn rác bộ nhớ Job Store định kỳ để tránh rò rỉ RAM."""
-    cleanup_expired_jobs()
+    async def cleanup_task():
+        while True:
+            await asyncio.sleep(3600)  # Chạy 1 giờ / lần
+            cleanup_expired_jobs()
+    asyncio.create_task(cleanup_task())
 
 
 # ═══════════════════════════════════════════
